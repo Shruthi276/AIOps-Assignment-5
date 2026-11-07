@@ -1,0 +1,21 @@
+Ray cluster resources: {'node:10.0.2.15': 1.0, 'memory': 5428036813.0, 'object_store_memory': 2326301491.0, 'CPU': 2.0, 'node:__internal_head__': 1.0}
+
+== deploy weight=0.2 ==
+  deployed app 'eta' with weight=0.2 in 14.6s
+  deployment EtaModelProd: DeploymentStatus.HEALTHY replicas={'RUNNING': 2}
+  deployment EtaModelCandidate: DeploymentStatus.HEALTHY replicas={'RUNNING': 1}
+  deployment Router: DeploymentStatus.HEALTHY replicas={'RUNNING': 1}
+[PASS] (a) candidate share within 0.20 +/- 0.04: 0.203 of 1000 distinct customers routed to v2
+[PASS] (b) 200 customers sticky on 2nd call: 0 of 200 changed arm (v2 among them: 43)
+
+== delete + redeploy identical app (weight=0.2) ==
+  deployed app 'eta' with weight=0.2 in 5.3s
+[PASS] (c) 200 customers sticky after redeploy: 0 of 200 changed arm
+
+== update weight 0.2 -> 0.5 ==
+  deployed app 'eta' with weight=0.5 in 6.5s
+[PASS] (d) no candidate customer moves back to prod: 203 were on v2, 0 moved back; 310 moved v1->v2; new share 0.513
+[PASS] (e) X-Beta header forces candidate: 50/50 prod-bucket customers served by v2 with X-Beta: 1; model_version={'v2'}
+[PASS] (e') without header they return to prod: 10/10 back on v1
+
+ALL CHECKS PASSED

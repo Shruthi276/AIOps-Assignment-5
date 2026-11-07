@@ -1,0 +1,9 @@
+data/
+mlflow.db
+mlruns/
+mlartifacts/
+machine_info.txt
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc

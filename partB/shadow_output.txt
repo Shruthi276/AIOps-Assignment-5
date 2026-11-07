@@ -1,0 +1,12 @@
+{
+  "requests": 200,
+  "prod_version": "v1",
+  "cand_version": "v2",
+  "mean_abs_diff_min": 9.48,
+  "pct_diff_gt_10min": 35.0,
+  "max_abs_diff_min": 51.7,
+  "prod_p95_ms": 9.91,
+  "cand_p95_ms": 9.89,
+  "prod_p50_ms": 7.49,
+  "cand_p50_ms": 7.54
+}

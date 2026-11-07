@@ -1,0 +1,71 @@
+### promotion_gate() with default thresholds
+{
+  "criteria": {
+    "mae_gain": true,
+    "latency_p95": true,
+    "no_rush_regression": true,
+    "no_rain_regression": true
+  },
+  "promote": true,
+  "details": {
+    "rel_mae_gain": 0.4894,
+    "min_rel_gain": 0.03,
+    "cand_p95_ms": 2.923,
+    "max_p95_ms": 10.0,
+    "rush_rel_change": -0.564,
+    "rain_rel_change": -0.4592,
+    "max_slice_regression": 0.05
+  },
+  "metrics": {
+    "prod": {
+      "mae": 11.955,
+      "mae_rush": 19.68,
+      "mae_rain": 11.623,
+      "p95_ms": 2.31
+    },
+    "candidate": {
+      "mae": 6.105,
+      "mae_rush": 8.58,
+      "mae_rain": 6.285,
+      "p95_ms": 2.923
+    }
+  },
+  "thresholds": "defaults"
+}
+
+### promotion_gate(min_rel_gain=0.60)
+{
+  "criteria": {
+    "mae_gain": false,
+    "latency_p95": true,
+    "no_rush_regression": true,
+    "no_rain_regression": true
+  },
+  "promote": false,
+  "details": {
+    "rel_mae_gain": 0.4894,
+    "min_rel_gain": 0.6,
+    "cand_p95_ms": 3.259,
+    "max_p95_ms": 10.0,
+    "rush_rel_change": -0.564,
+    "rain_rel_change": -0.4592,
+    "max_slice_regression": 0.05
+  },
+  "metrics": {
+    "prod": {
+      "mae": 11.955,
+      "mae_rush": 19.68,
+      "mae_rain": 11.623,
+      "p95_ms": 2.339
+    },
+    "candidate": {
+      "mae": 6.105,
+      "mae_rush": 8.58,
+      "mae_rain": 6.285,
+      "p95_ms": 3.259
+    }
+  },
+  "thresholds": {
+    "min_rel_gain": 0.6
+  }
+}
